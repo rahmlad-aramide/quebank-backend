@@ -32,4 +32,8 @@ const signIn = (req, res) => {
   });
 }
 
-module.exports = {signUp, signIn}
+const createFile = (req, res) => {
+  
+}
+
+module.exports = {signUp, signIn, createFile}
