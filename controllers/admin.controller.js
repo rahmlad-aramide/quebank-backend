@@ -33,7 +33,7 @@ const signIn = (req, res) => {
 }
 
 const createFile = (req, res) => {
-  
+
 }
 
-module.exports = {signUp, signIn, createFile}
+module.exports = {signUp, signIn, createFile};

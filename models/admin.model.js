@@ -6,7 +6,6 @@ const adminSchema = mongoose.Schema({
   lastName : {type: String, required:true},
   email : {type: String, required:true, unique: true},
   password : {type: String, required:true},
-  date : { type: Date, default: Date.now },
 });
 
 let saltRound = 10;
