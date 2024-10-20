@@ -1,5 +1,5 @@
 const adminModel = require("../models/admin.model");
-const storage = require("../models/storage.model");
+const {storage, fileModel} = require("../models/storage.model");
 const BUCKET_ID = process.env.BUCKET_ID;
 const { ID } = require("node-appwrite");
 
@@ -36,8 +36,16 @@ const signIn = (req, res) => {
 }
 
 const createFile = (req, res) => {
-  storage.createFile(BUCKET_ID, ID.unique(), document.getElementById('uploader').files[0]).then((response) => {
-    console.log(response);
+  const {file, fileName} = req.body;
+  storage.createFile(BUCKET_ID, ID.unique(), file).then((response) => {
+    if (response) {
+      // const form = new fileModel({fileName, fileID: response.fileID});
+      // form.save().then((result) => {
+
+      // }).catch((err) => {
+
+      // });
+    }
   }).catch((err) => {
     console.log(err);
   })

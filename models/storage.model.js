@@ -1,4 +1,5 @@
 const sdk = require('node-appwrite');
+const mongoose = require("mongoose");
 
 const API = process.env.API_ENDPOINT;
 const PROJECT_ID = process.env.PROJECT_ID;
@@ -8,4 +9,12 @@ const client = new sdk.Client().setEndpoint(API).setProject(PROJECT_ID).setKey(A
 
 const storage = new sdk.Storage(client);
 
-module.exports= storage;
+const fileSchema = mongoose.Schema({
+  fileName : { type: String, required: true },
+  date : { type: Date, default: Date.now },
+  fileID : { type: String, required: true }
+});
+
+const fileModel = mongoose.model("Que_bank_files_db", fileSchema);
+
+module.exports= {storage, fileModel};
